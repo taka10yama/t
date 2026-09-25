@@ -1,0 +1,8 @@
+id: nihon-rekishi
+source_type: own
+source_ref: "claude.ai artifact「60秒でわかる日本の歴史」"
+license: 自社
+why_collected: 自社制作の60秒ショートで完成度が高い。背景ワイプ→円盤とイラストのオーバーシュート→文字4段のせり上がりという動きの順序、Dela Gothicの詰めた見出しと太めの本文の対比、時代ごとに1色の背景で切り替える配色規則、3.6秒で1/3動いて2/3止まる間を部品として取り出したい
+target_axes: [motion, type, layout, icons, palette, pacing]
+collected_by: Taka
+status: awaiting_approval

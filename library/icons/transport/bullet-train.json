@@ -1,0 +1,39 @@
+{
+  "id": "icons.transport.bullet-train",
+  "axis": "icons",
+  "colors": 4,
+  "motifs": [
+    "新幹線",
+    "富士山",
+    "昭和",
+    "高度経済成長"
+  ],
+  "default_colors": {
+    "c1": "#3E5C86",
+    "c2": "#FFFFFF",
+    "c3": "#1F4E9E",
+    "c4": "#1F2A36"
+  },
+  "mood": [
+    "親しみやすい",
+    "ポップ",
+    "懐かしい"
+  ],
+  "fit": [
+    "歴史",
+    "教育",
+    "テクノロジー",
+    "旅行・観光"
+  ],
+  "avoid": [
+    "訃報・災害"
+  ],
+  "formats": [
+    "short",
+    "long"
+  ],
+  "source_sample": "nihon-rekishi",
+  "license": "自社",
+  "approved": false,
+  "created_at": "2026-09-25"
+}

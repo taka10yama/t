@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>60秒でわかる日本の歴史</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --page:#E9E6DF; --chrome:#1E2A36; --muted:#5E6A74; --bar:#CFCAC0;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --page:#12181E; --chrome:#E6E2D8; --muted:#8E99A2; --bar:#2A333C; }
+}
+:root[data-theme="dark"]{ --page:#12181E; --chrome:#E6E2D8; --muted:#8E99A2; --bar:#2A333C; }
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html,body{margin:0;height:100%}
+body{background:var(--page);color:var(--chrome);font-family:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;display:flex;align-items:center;justify-content:center}
+.wrap{width:min(100vw - 24px, 1100px, (100vh - 150px) * 16 / 9);min-width:300px}
+.viewport{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:14px;background:#1E2A36}
+.stage{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:0 0;font-family:"Zen Kaku Gothic New",sans-serif}
+.scene{position:absolute;inset:0;background:var(--bg);color:var(--ink);visibility:hidden;display:grid;grid-template-columns:560px 1fr;align-items:center;padding:0 90px 0 70px}
+.scene.prev{visibility:visible;z-index:1}
+.scene.active{visibility:visible;z-index:2;animation:wipe .55s cubic-bezier(.7,0,.2,1) both}
+@keyframes wipe{from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0 0 0 0)}}
+.art{position:relative;width:460px;height:460px;justify-self:center}
+.art .disc{position:absolute;inset:0;border-radius:50%;background:var(--disc)}
+.art svg{position:absolute;inset:40px;width:380px;height:380px}
+.active .disc{animation:pop .6s .15s cubic-bezier(.3,1.5,.5,1) both}
+.active .art svg{animation:pop .7s .3s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes pop{from{transform:scale(.4) rotate(-8deg);opacity:0}to{transform:none;opacity:1}}
+.txt{padding-left:30px}
+.num{font-size:26px;font-weight:700;opacity:.7;letter-spacing:.04em}
+.era{font-family:"Dela Gothic One","Zen Kaku Gothic New",sans-serif;font-weight:400;font-size:var(--es,190px);line-height:1.05;margin:6px 0 10px;letter-spacing:-.02em}
+.date{font-size:40px;font-weight:700;color:var(--acc)}
+.fact{font-size:38px;font-weight:700;line-height:1.45;margin:22px 0 0;max-width:15em}
+.active .num,.active .era,.active .date,.active .fact{animation:rise .5s cubic-bezier(.2,.9,.3,1.2) both}
+.active .num{animation-delay:.3s}.active .era{animation-delay:.38s}.active .date{animation-delay:.52s}.active .fact{animation-delay:.66s}
+@keyframes rise{from{transform:translateY(50px);opacity:0}to{transform:none;opacity:1}}
+/* title & end cards */
+.card{grid-template-columns:1fr;text-align:center;justify-items:center;padding:0}
+.card .big{font-family:"Dela Gothic One",sans-serif;font-size:170px;line-height:1.1;margin:0}
+.card .small{font-size:44px;font-weight:700;color:var(--acc);margin-top:18px}
+.card .sun{width:150px;height:150px;border-radius:50%;background:#D0413A;margin-bottom:30px}
+.active .sun{animation:pop .6s .1s cubic-bezier(.3,1.6,.5,1) both}
+.active .big{animation:rise .55s .3s cubic-bezier(.2,.9,.3,1.2) both}
+.active .small{animation:rise .5s .55s cubic-bezier(.2,.9,.3,1.2) both}
+.paused .stage *{animation-play-state:paused!important}
+/* timeline */
+.tl{position:absolute;left:0;right:0;bottom:0;height:10px;background:rgba(0,0,0,.25);z-index:5}
+.tl i{display:block;height:100%;width:0;background:#fff}
+/* controls */
+.ctrl{display:flex;align-items:center;gap:12px;margin-top:14px}
+button{font:inherit;font-weight:700;font-size:15px;color:var(--page);background:var(--chrome);border:0;border-radius:999px;padding:10px 20px;cursor:pointer}
+button.ghost{background:transparent;color:var(--chrome);box-shadow:inset 0 0 0 2px var(--chrome)}
+button:focus-visible{outline:3px solid #2E7DB5;outline-offset:3px}
+.time{margin-left:auto;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+.eras{display:flex;gap:4px;margin-top:12px;overflow-x:auto;padding-bottom:4px}
+.eras button{flex:0 0 auto;font-size:13px;padding:6px 10px;background:var(--bar);color:var(--chrome)}
+.eras button.on{background:var(--chrome);color:var(--page)}
+@media (prefers-reduced-motion: reduce){.stage *{animation-duration:.01ms!important;animation-delay:0s!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="viewport" id="vp">
+    <div class="stage" id="stage"></div>
+    <div class="tl"><i id="bar"></i></div>
+  </div>
+  <div class="ctrl">
+    <button id="play">一時停止</button>
+    <button class="ghost" id="restart">最初から</button>
+    <span class="time" id="time">0:00 / 1:00</span>
+  </div>
+  <div class="eras" id="eras"></div>
+</div>
+
+<script>
+const S = {
+jomon:`<svg viewBox="0 0 200 200"><g fill="#8E5530"><path d="M58 34l8-18 8 16 10-20 8 20 8-20 10 20 8-16 8 18z"/></g>
+<path d="M58 36h84q-14 18-10 44 18 48-4 90H72q-22-42-4-90 4-26-10-44z" fill="#D69A62"/>
+<g fill="none" stroke="#8E5530" stroke-width="5" stroke-linecap="round"><path d="M68 70q8-6 16 0t16 0 16 0 16 0"/><path d="M66 95q9-6 17 0t17 0 17 0 17 0"/><path d="M66 120q9-6 17 0t17 0 17 0 17 0"/><path d="M70 145q8-6 15 0t15 0 15 0 15 0"/></g></svg>`,
+yayoi:`<svg viewBox="0 0 200 200"><g fill="#6B4A2B"><rect x="52" y="120" width="8" height="60"/><rect x="140" y="120" width="8" height="60"/><rect x="96" y="120" width="8" height="60"/><rect x="40" y="112" width="120" height="12"/></g>
+<rect x="56" y="80" width="88" height="34" fill="#A87A4C"/><path d="M30 86L100 22l70 64z" fill="#7A5C2E"/><path d="M60 58h80" stroke="#5E4522" stroke-width="4"/>
+<g stroke="#4F6B2A" stroke-width="4" fill="none" stroke-linecap="round"><path d="M180 185q-4-40 6-70"/><path d="M168 185q0-36-14-60"/></g><g fill="#F4E6B0"><ellipse cx="186" cy="110" rx="5" ry="9"/><ellipse cx="152" cy="120" rx="5" ry="9"/></g></svg>`,
+kofun:`<svg viewBox="0 0 200 200"><g fill="#4A8FB8"><circle cx="100" cy="78" r="60"/><path d="M58 104h84l28 86H30z"/></g>
+<g fill="#3F5A22"><circle cx="100" cy="78" r="46"/><path d="M70 108h60l20 70H50z"/></g><circle cx="100" cy="78" r="22" fill="#56752F"/></svg>`,
+asuka:`<svg viewBox="0 0 200 200"><path d="M72 182h56l-12-138H84z" fill="#D0413A"/>
+<g fill="#1A1D24"><path d="M22 176h156l-16-14H38z"/><path d="M34 146h132l-14-13H48z"/><path d="M44 118h112l-13-12H57z"/><path d="M53 92h94l-12-11H65z"/><path d="M62 68h76l-11-10H73z"/></g>
+<rect x="97" y="14" width="6" height="46" fill="#E3B341"/><g fill="#E3B341"><rect x="90" y="22" width="20" height="4"/><rect x="90" y="32" width="20" height="4"/><rect x="90" y="42" width="20" height="4"/></g><circle cx="100" cy="12" r="5" fill="#E3B341"/></svg>`,
+nara:`<svg viewBox="0 0 200 200"><rect x="24" y="24" width="152" height="152" fill="none" stroke="#FBEFD8" stroke-width="6"/>
+<g stroke="#FBEFD8" stroke-width="3"><path d="M24 62h152M24 100h152M24 138h152M62 24v152M138 24v152"/></g><path d="M100 24v152" stroke="#FBEFD8" stroke-width="10"/>
+<rect x="80" y="30" width="40" height="28" fill="#FBEFD8"/></svg>`,
+heian:`<svg viewBox="0 0 200 200"><circle cx="150" cy="46" r="26" fill="#FFF6DA"/>
+<path d="M100 170L24 96A108 108 0 0 1 176 96z" fill="#FDFBF4"/><path d="M100 170L48 118A74 74 0 0 1 152 118z" fill="#6B4E8E"/>
+<g stroke="#3A2A52" stroke-width="3"><path d="M100 170L24 96M100 170L42 76M100 170L66 62M100 170L100 58M100 170L134 62M100 170L158 76M100 170L176 96"/></g><circle cx="100" cy="170" r="7" fill="#3A2A52"/></svg>`,
+kamakura:`<svg viewBox="0 0 200 200"><path d="M100 76L58 12l14-2 28 52 28-52 14 2z" fill="#E3B341"/>
+<path d="M22 128h156l12 34H10z" fill="#B8352E"/><g stroke="#7E2019" stroke-width="3"><path d="M16 140h168M13 151h174"/></g>
+<path d="M40 128q0-72 60-72t60 72z" fill="#44596A"/><g fill="#9FB3C2"><circle cx="70" cy="100" r="4"/><circle cx="100" cy="86" r="4"/><circle cx="130" cy="100" r="4"/><circle cx="86" cy="112" r="4"/><circle cx="114" cy="112" r="4"/></g>
+<path d="M28 126q-10-18 6-24l8 24z M172 126q10-18-6-24l-8 24z" fill="#E3B341"/></svg>`,
+muromachi:`<svg viewBox="0 0 200 200"><rect x="0" y="160" width="200" height="40" fill="#2F6E8E"/><g fill="#D9B23A" opacity=".35"><rect x="54" y="166" width="92" height="6"/><rect x="64" y="178" width="72" height="5"/></g>
+<rect x="54" y="122" width="92" height="38" fill="#D9B23A"/><path d="M36 124h128l-14-14H50z" fill="#3A2E1E"/>
+<rect x="62" y="84" width="76" height="28" fill="#D9B23A"/><path d="M46 86h108l-13-13H59z" fill="#3A2E1E"/>
+<rect x="74" y="52" width="52" height="24" fill="#E7C65A"/><path d="M60 54h80l-40-26z" fill="#3A2E1E"/><path d="M100 30l-6-12 12 0z" fill="#E7C65A"/>
+<g fill="#3A2E1E"><rect x="72" y="130" width="8" height="22"/><rect x="96" y="130" width="8" height="22"/><rect x="120" y="130" width="8" height="22"/></g></svg>`,
+sengoku:`<svg viewBox="0 0 200 200"><path d="M26 186h148l-16-50H42z" fill="#8A8C8E"/><g stroke="#6C6E70" stroke-width="3"><path d="M36 170h128M40 154h120"/></g>
+<rect x="52" y="104" width="96" height="34" fill="#FBF8F1"/><path d="M34 108h132l-16-16H50z" fill="#23282E"/>
+<rect x="64" y="68" width="72" height="26" fill="#FBF8F1"/><path d="M48 72h104l-14-14H62z" fill="#23282E"/>
+<rect x="76" y="38" width="48" height="22" fill="#FBF8F1"/><path d="M62 42h76l-38-26z" fill="#23282E"/>
+<g fill="#23282E"><rect x="68" y="114" width="10" height="10"/><rect x="95" y="114" width="10" height="10"/><rect x="122" y="114" width="10" height="10"/><rect x="82" y="74" width="10" height="10"/><rect x="108" y="74" width="10" height="10"/></g>
+<path d="M68 16q-8 6-4 12 6-2 4-12zM132 16q8 6 4 12-6-2-4-12z" fill="#E3B341"/></svg>`,
+edo:`<svg viewBox="0 0 200 200"><path d="M100 4v24" stroke="#E6D9B8" stroke-width="4"/><rect x="72" y="26" width="56" height="16" rx="4" fill="#1A1D24"/>
+<ellipse cx="100" cy="104" rx="62" ry="68" fill="#D0413A"/><g fill="none" stroke="#9E2A24" stroke-width="3"><ellipse cx="100" cy="104" rx="62" ry="24"/><ellipse cx="100" cy="104" rx="60" ry="46"/><path d="M40 104h120"/></g>
+<rect x="72" y="166" width="56" height="16" rx="4" fill="#1A1D24"/><circle cx="100" cy="104" r="22" fill="#FBEFD8"/><circle cx="100" cy="104" r="10" fill="#D0413A"/></svg>`,
+meiji:`<svg viewBox="0 0 200 200"><g fill="#EDEFF0"><circle cx="58" cy="40" r="14"/><circle cx="40" cy="26" r="10"/><circle cx="76" cy="30" r="10"/></g>
+<rect x="48" y="58" width="16" height="42" fill="#1B1E22"/><rect x="42" y="52" width="28" height="10" fill="#1B1E22"/>
+<rect x="24" y="96" width="112" height="44" rx="20" fill="#1B1E22"/><rect x="118" y="62" width="60" height="78" fill="#1B1E22"/><rect x="130" y="74" width="36" height="24" fill="#E6C77A"/>
+<rect x="14" y="140" width="172" height="10" fill="#1B1E22"/><path d="M14 150l-8 22h24z" fill="#1B1E22"/>
+<g fill="#C0392B"><circle cx="50" cy="168" r="18"/><circle cx="96" cy="168" r="18"/><circle cx="152" cy="164" r="24"/></g><g fill="#1B1E22"><circle cx="50" cy="168" r="6"/><circle cx="96" cy="168" r="6"/><circle cx="152" cy="164" r="8"/></g><path d="M50 168h102" stroke="#EDEFF0" stroke-width="4"/></svg>`,
+taisho:`<svg viewBox="0 0 200 200"><g fill="none" stroke="#FBEFD8" stroke-width="6" stroke-linecap="round"><path d="M150 40q14 14 0 28"/><path d="M164 28q26 26 0 52"/></g>
+<rect x="30" y="50" width="120" height="136" rx="18" fill="#7A4A2A"/><path d="M48 130V94a42 42 0 0 1 84 0v36z" fill="#E9D3A6"/>
+<g stroke="#7A4A2A" stroke-width="4"><path d="M62 70v60M76 58v72M90 53v77M104 53v77M118 58v72"/></g>
+<circle cx="66" cy="158" r="10" fill="#E3B341"/><circle cx="114" cy="158" r="10" fill="#E3B341"/></svg>`,
+showa:`<svg viewBox="0 0 200 200"><path d="M20 118L92 34l72 84z" fill="#3E5C86"/><path d="M76 52l16-18 16 18-8 8-8-6-8 6z" fill="#FFFFFF"/>
+<path d="M4 176V122h120q56 0 70 38l4 16z" fill="#FFFFFF"/><rect x="4" y="160" width="192" height="8" fill="#1F4E9E"/>
+<g fill="#1F4E9E"><rect x="14" y="134" width="16" height="12" rx="3"/><rect x="40" y="134" width="16" height="12" rx="3"/><rect x="66" y="134" width="16" height="12" rx="3"/><rect x="92" y="134" width="16" height="12" rx="3"/></g><path d="M140 128q28 2 42 22h-42z" fill="#1F2A36"/>
+<rect x="0" y="182" width="200" height="6" fill="#1F2A36"/></svg>`,
+heisei:`<svg viewBox="0 0 200 200"><rect x="116" y="4" width="8" height="34" rx="4" fill="#3A3F46"/>
+<g transform="rotate(-12 100 100)"><rect x="56" y="24" width="84" height="80" rx="14" fill="#8C96A3"/><rect x="66" y="34" width="64" height="56" rx="4" fill="#9FE3C8"/>
+<rect x="56" y="108" width="84" height="84" rx="14" fill="#B4BCC6"/><rect x="56" y="102" width="84" height="10" fill="#6E7884"/>
+<g fill="#6E7884"><rect x="70" y="122" width="16" height="10" rx="3"/><rect x="90" y="122" width="16" height="10" rx="3"/><rect x="110" y="122" width="16" height="10" rx="3"/><rect x="70" y="140" width="16" height="10" rx="3"/><rect x="90" y="140" width="16" height="10" rx="3"/><rect x="110" y="140" width="16" height="10" rx="3"/><rect x="70" y="158" width="16" height="10" rx="3"/><rect x="90" y="158" width="16" height="10" rx="3"/><rect x="110" y="158" width="16" height="10" rx="3"/></g></g></svg>`,
+reiwa:`<svg viewBox="0 0 200 200"><g stroke="#3C5A78" stroke-width="2" fill="#3C5A78"><path d="M16 40h40v40h30M184 60h-30v50h-20M20 170h50v-30M180 160h-40v-20" fill="none"/><circle cx="86" cy="80" r="4"/><circle cx="134" cy="110" r="4"/><circle cx="70" cy="140" r="4"/><circle cx="140" cy="140" r="4"/></g>
+<path d="M10 192q60-40 90-92" stroke="#6B4A3A" stroke-width="8" fill="none" stroke-linecap="round"/>
+<g fill="#F2A7BD"><circle cx="100" cy="68" r="26"/><circle cx="132" cy="90" r="26"/><circle cx="120" cy="128" r="26"/><circle cx="80" cy="128" r="26"/><circle cx="68" cy="90" r="26"/></g>
+<circle cx="100" cy="100" r="16" fill="#D9557B"/><g fill="#E3B341"><circle cx="100" cy="84" r="4"/><circle cx="114" cy="94" r="4"/><circle cx="110" cy="112" r="4"/><circle cx="90" cy="112" r="4"/><circle cx="86" cy="94" r="4"/></g></svg>`
+};
+
+const ERAS = [
+ {k:"jomon",   n:"縄文", d:"約1万6000年前〜", f:"縄目もようの土器。狩りと採集で暮らす", bg:"#2F4A3A", ink:"#F3EBDD", acc:"#E6B37A", disc:"#3B5A47"},
+ {k:"yayoi",   n:"弥生", d:"紀元前4世紀頃〜（諸説あり）", f:"稲作が広まり、ムラからクニへ", bg:"#E8B83A", ink:"#2B2113", acc:"#6B3F12", disc:"#F0CB63"},
+ {k:"kofun",   n:"古墳", d:"3世紀後半〜", f:"巨大な前方後円墳。ヤマト王権の誕生", bg:"#9DBA6A", ink:"#1F2A12", acc:"#2F4D16", disc:"#B3CC85"},
+ {k:"asuka",   n:"飛鳥", d:"592年〜", f:"聖徳太子。仏教と十七条の憲法", bg:"#1F3B6E", ink:"#F4EFE4", acc:"#F2B84B", disc:"#2A4B85"},
+ {k:"nara",    n:"奈良", d:"710年〜", f:"平城京に都を移し、東大寺に大仏", bg:"#C73A33", ink:"#FBEFD8", acc:"#FFD37A", disc:"#D6524A"},
+ {k:"heian",   n:"平安", d:"794年〜", f:"貴族の時代。かな文字と源氏物語", bg:"#B6A3CF", ink:"#2A1E3C", acc:"#4E2F7A", disc:"#C7B8DC"},
+ {k:"kamakura",n:"鎌倉", d:"1185年〜", f:"源頼朝がひらいた、初の武家政権", bg:"#22313A", ink:"#EDE6D6", acc:"#E3B341", disc:"#2E4250"},
+ {k:"muromachi",n:"室町", d:"1336年〜", f:"足利氏の幕府。金閣と銀閣", bg:"#3E6450", ink:"#F5EEDC", acc:"#E7C65A", disc:"#4B7862"},
+ {k:"sengoku", n:"戦国", d:"1467年〜 ／ 安土桃山 1573年〜", f:"群雄割拠から、信長・秀吉の天下統一へ", bg:"#7A1E1E", ink:"#FBF3E6", acc:"#F2B84B", disc:"#8E2A28"},
+ {k:"edo",     n:"江戸", d:"1603年〜", f:"徳川の約260年の太平。町人文化が花ひらく", bg:"#1B2A4A", ink:"#F4EBD8", acc:"#F07A6A", disc:"#26395F"},
+ {k:"meiji",   n:"明治", d:"1868年〜", f:"文明開化。鉄道が走り、近代国家へ", bg:"#8FA3AA", ink:"#15191C", acc:"#8E1F17", disc:"#A2B4BA"},
+ {k:"taisho",  n:"大正", d:"1912年〜", f:"大正デモクラシー。ラジオ放送が始まる", bg:"#D98A96", ink:"#2A1418", acc:"#FBEFD8", disc:"#E29FA9"},
+ {k:"showa",   n:"昭和", d:"1926年〜", f:"戦争を経て、新幹線と高度経済成長", bg:"#86BFE3", ink:"#0F2238", acc:"#1F4E9E", disc:"#A0CFEB"},
+ {k:"heisei",  n:"平成", d:"1989年〜", f:"バブル崩壊とインターネットの普及", bg:"#E4E7EA", ink:"#1E2A36", acc:"#1F8A6A", disc:"#F2F4F6"},
+ {k:"reiwa",   n:"令和", d:"2019年〜", f:"梅の花の歌から生まれた元号。AIとともに生きる時代へ", bg:"#0F1F2E", ink:"#F4EFE6", acc:"#F2A7BD", disc:"#18314A"}
+];
+
+const INTRO=2.6, PER=3.6, OUTRO=3.2;
+const scenes=[]; const stage=document.getElementById('stage');
+function mk(html,style,cls){const d=document.createElement('div');d.className='scene '+(cls||'');d.setAttribute('style',style);d.innerHTML=html;stage.appendChild(d);return d;}
+scenes.push({el:mk(`<div class="sun"></div><h1 class="big">日本の歴史</h1><div class="small">縄文から令和まで、60秒で</div>`,'--bg:#F4F1EC;--ink:#1E2A36;--acc:#C73A33','card'),dur:INTRO,label:'はじめ'});
+ERAS.forEach((e,i)=>{
+  scenes.push({el:mk(`<div class="art"><div class="disc"></div>${S[e.k]}</div><div class="txt"><div class="num">${String(i+1).padStart(2,'0')} / ${ERAS.length}</div><h2 class="era">${e.n}</h2><div class="date">${e.d}</div><p class="fact">${e.f}</p></div>`,
+    `--bg:${e.bg};--ink:${e.ink};--acc:${e.acc};--disc:${e.disc}`),dur:PER,label:e.n});
+});
+scenes.push({el:mk(`<div class="sun"></div><h1 class="big">そして、今。</h1><div class="small">歴史の続きは、いま書かれている</div>`,'--bg:#1E2A36;--ink:#F4F1EC;--acc:#F2A7BD','card'),dur:OUTRO,label:'おわり'});
+
+let acc=0; scenes.forEach(s=>{s.start=acc;acc+=s.dur}); const TOTAL=acc;
+
+const vp=document.getElementById('vp');
+function fit(){stage.style.transform=`scale(${vp.clientWidth/1280})`}
+addEventListener('resize',fit); fit();
+
+const erasBox=document.getElementById('eras');
+scenes.forEach((s,i)=>{const b=document.createElement('button');b.textContent=s.label;b.onclick=()=>seek(s.start+0.001);erasBox.appendChild(b);s.btn=b;});
+
+let t=0, playing=true, last=performance.now(), cur=-1;
+function show(i){
+  if(i===cur) return;
+  scenes.forEach((s,j)=>{s.el.classList.remove('active','prev');s.btn.classList.toggle('on',j===i)});
+  if(cur>=0 && cur!==i) scenes[cur].el.classList.add('prev');
+  const el=scenes[i].el; void el.offsetWidth; el.classList.add('active');
+  scenes[i].btn.scrollIntoView({block:'nearest',inline:'nearest'});
+  cur=i;
+}
+function idx(tt){for(let i=scenes.length-1;i>=0;i--) if(tt>=scenes[i].start) return i; return 0;}
+const fmt=s=>`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
+function seek(tt){t=Math.max(0,Math.min(tt,TOTAL));cur=-1;show(idx(t));if(!playing)toggle();}
+function tick(now){
+  const dt=(now-last)/1000; last=now;
+  if(playing){t+=dt; if(t>=TOTAL){t=TOTAL;playing=false;document.getElementById('play').textContent='再生';vp.classList.add('paused');}}
+  show(idx(Math.min(t,TOTAL-0.001)));
+  document.getElementById('bar').style.width=(t/TOTAL*100)+'%';
+  document.getElementById('time').textContent=`${fmt(t)} / ${fmt(TOTAL)}`;
+  requestAnimationFrame(tick);
+}
+function toggle(){
+  if(!playing && t>=TOTAL){t=0;cur=-1;}
+  playing=!playing; document.getElementById('play').textContent=playing?'一時停止':'再生';
+  vp.classList.toggle('paused',!playing);
+}
+document.getElementById('play').onclick=toggle;
+document.getElementById('restart').onclick=()=>seek(0);
+vp.onclick=toggle;
+addEventListener('keydown',e=>{
+  if(e.code==='Space'){e.preventDefault();toggle()}
+  if(e.key==='ArrowRight') seek(scenes[Math.min(cur+1,scenes.length-1)].start+0.001);
+  if(e.key==='ArrowLeft') seek(scenes[Math.max(cur-1,0)].start+0.001);
+});
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>

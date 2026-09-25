@@ -1,0 +1,39 @@
+{
+  "id": "icons.culture.folding-fan",
+  "axis": "icons",
+  "colors": 4,
+  "motifs": [
+    "扇",
+    "月",
+    "貴族",
+    "平安",
+    "雅"
+  ],
+  "default_colors": {
+    "c1": "#FFF6DA",
+    "c2": "#FDFBF4",
+    "c3": "#6B4E8E",
+    "c4": "#3A2A52"
+  },
+  "mood": [
+    "親しみやすい",
+    "ポップ",
+    "懐かしい"
+  ],
+  "fit": [
+    "歴史",
+    "教育",
+    "文化・芸術"
+  ],
+  "avoid": [
+    "訃報・災害"
+  ],
+  "formats": [
+    "short",
+    "long"
+  ],
+  "source_sample": "nihon-rekishi",
+  "license": "自社",
+  "approved": false,
+  "created_at": "2026-09-25"
+}

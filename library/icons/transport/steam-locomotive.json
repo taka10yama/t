@@ -1,0 +1,38 @@
+{
+  "id": "icons.transport.steam-locomotive",
+  "axis": "icons",
+  "colors": 4,
+  "motifs": [
+    "鉄道",
+    "明治",
+    "近代化",
+    "産業"
+  ],
+  "default_colors": {
+    "c1": "#EDEFF0",
+    "c2": "#1B1E22",
+    "c3": "#E6C77A",
+    "c4": "#C0392B"
+  },
+  "mood": [
+    "親しみやすい",
+    "ポップ",
+    "懐かしい"
+  ],
+  "fit": [
+    "歴史",
+    "教育",
+    "テクノロジー"
+  ],
+  "avoid": [
+    "訃報・災害"
+  ],
+  "formats": [
+    "short",
+    "long"
+  ],
+  "source_sample": "nihon-rekishi",
+  "license": "自社",
+  "approved": false,
+  "created_at": "2026-09-25"
+}

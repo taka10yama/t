@@ -1,0 +1,38 @@
+{
+  "id": "icons.map.grid-capital",
+  "axis": "icons",
+  "colors": 3,
+  "motifs": [
+    "平城京",
+    "都",
+    "碁盤目",
+    "奈良",
+    "都市計画"
+  ],
+  "default_colors": {
+    "c1": "#FBEFD8",
+    "c2": "#F2C9A4",
+    "c3": "#7A1E1E"
+  },
+  "mood": [
+    "親しみやすい",
+    "ポップ",
+    "懐かしい"
+  ],
+  "fit": [
+    "歴史",
+    "教育",
+    "地理・地政学"
+  ],
+  "avoid": [
+    "訃報・災害"
+  ],
+  "formats": [
+    "short",
+    "long"
+  ],
+  "source_sample": "nihon-rekishi",
+  "license": "自社",
+  "approved": false,
+  "created_at": "2026-09-25"
+}

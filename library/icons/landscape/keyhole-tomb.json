@@ -1,0 +1,37 @@
+{
+  "id": "icons.landscape.keyhole-tomb",
+  "axis": "icons",
+  "colors": 3,
+  "motifs": [
+    "前方後円墳",
+    "古墳",
+    "古代",
+    "王権"
+  ],
+  "default_colors": {
+    "c1": "#4A8FB8",
+    "c2": "#3F5A22",
+    "c3": "#56752F"
+  },
+  "mood": [
+    "親しみやすい",
+    "ポップ",
+    "懐かしい"
+  ],
+  "fit": [
+    "歴史",
+    "教育",
+    "地理・地政学"
+  ],
+  "avoid": [
+    "訃報・災害"
+  ],
+  "formats": [
+    "short",
+    "long"
+  ],
+  "source_sample": "nihon-rekishi",
+  "license": "自社",
+  "approved": false,
+  "created_at": "2026-09-25"
+}

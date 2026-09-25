@@ -1,0 +1,29 @@
+{
+  "id": "pacing.act-then-hold",
+  "axis": "pacing",
+  "scene_sec": 3.6,
+  "motion_ratio": 0.33,
+  "hold_ratio": 0.67,
+  "format": [
+    "short"
+  ],
+  "notes": "最後の動き（本文のせり上がり）が 1.16s で終わる。残りはナレーションを聞かせるための静止。前後に 2.6s のはじめ・3.2s のおわりを置いて 60 秒",
+  "mood": [
+    "軽快"
+  ],
+  "fit": [
+    "歴史",
+    "教育",
+    "ランキング"
+  ],
+  "avoid": [
+    "訃報・災害"
+  ],
+  "formats": [
+    "short"
+  ],
+  "source_sample": "nihon-rekishi",
+  "license": "自社",
+  "approved": true,
+  "created_at": "2026-09-25"
+}
