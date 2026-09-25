@@ -126,7 +126,7 @@ if (intake.source_type === 'observation_only') {
       decl: (r.body.match(/(animation[\w-]*|transition[\w-]*)\s*:[^;]+/g) || []).map((s) => s.trim()),
     })),
     durations_ms: tally([...decls('animation'), ...decls('transition'), ...decls('animation-duration'), ...decls('transition-duration'), ...decls('animation-delay')]
-      .flatMap((v) => v.match(/\b\d*\.?\d+m?s\b/g) || []).map(toMs)),
+      .flatMap((v) => v.match(/(?<![\w.])(?:\d*\.\d+|\d+)m?s\b/g) || []).map(toMs)),
     js_timings: tally([...js.matchAll(/\b(dur|duration|delay|hold|stagger|step|wait|t)\w*\s*[:=]\s*(\d+(?:\.\d+)?)/gi)].map((m) => `${m[1]}=${m[2]}`)),
     js_timeouts_ms: tally([...js.matchAll(/setTimeout\([^,]+,\s*(\d+)/g)].map((m) => Number(m[1]))),
   };
@@ -151,9 +151,11 @@ if (intake.source_type === 'observation_only') {
   };
 
   // Inline SVGs are only dumped for code we own or are licensed to adapt.
-  const svgs = [...html.matchAll(/<svg\b[\s\S]*?<\/svg>/gi)].map((m) => m[0]);
+  // Markup SVGs only: SVGs inside <script> are picked up from js below, once.
+  const markup = html.replace(/<script[\s\S]*?<\/script>/gi, '');
+  const svgs = [...markup.matchAll(/<svg\b[\s\S]*?<\/svg>/gi)].map((m) => m[0]);
   const jsSvgs = [...js.matchAll(/`(\s*<svg\b[\s\S]*?<\/svg>\s*)`/g)].map((m) => m[1].trim());
-  const all = [...svgs, ...jsSvgs];
+  const all = [...new Set([...svgs, ...jsSvgs])];
   const rawDir = path.join(dir, 'drafts', '_raw-svg');
   fs.mkdirSync(rawDir, { recursive: true });
   report.icons = all.map((svg, i) => {

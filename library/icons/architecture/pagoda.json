@@ -1,0 +1,38 @@
+{
+  "id": "icons.architecture.pagoda",
+  "axis": "icons",
+  "colors": 3,
+  "motifs": [
+    "五重塔",
+    "寺院",
+    "仏教",
+    "飛鳥"
+  ],
+  "default_colors": {
+    "c1": "#D0413A",
+    "c2": "#1A1D24",
+    "c3": "#E3B341"
+  },
+  "mood": [
+    "親しみやすい",
+    "ポップ",
+    "懐かしい"
+  ],
+  "fit": [
+    "歴史",
+    "教育",
+    "文化・芸術",
+    "旅行・観光"
+  ],
+  "avoid": [
+    "訃報・災害"
+  ],
+  "formats": [
+    "short",
+    "long"
+  ],
+  "source_sample": "nihon-rekishi",
+  "license": "自社",
+  "approved": false,
+  "created_at": "2026-09-25"
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+<g stroke="var(--c1)" stroke-linecap="round" stroke-width="2" fill="var(--c1)"><path d="M16 40h40v40h30M184 60h-30v50h-20M20 170h50v-30M180 160h-40v-20" fill="none"/><circle cx="86" cy="80" r="4"/><circle cx="134" cy="110" r="4"/><circle cx="70" cy="140" r="4"/><circle cx="140" cy="140" r="4"/></g>
+<path d="M10 192q60-40 90-92" stroke="var(--c2)" stroke-width="8" fill="none" stroke-linecap="round"/>
+<g fill="var(--c3)"><circle cx="100" cy="68" r="26"/><circle cx="132" cy="90" r="26"/><circle cx="120" cy="128" r="26"/><circle cx="80" cy="128" r="26"/><circle cx="68" cy="90" r="26"/></g>
+<circle cx="100" cy="100" r="16" fill="var(--c4)"/><g fill="var(--c5)"><circle cx="100" cy="84" r="4"/><circle cx="114" cy="94" r="4"/><circle cx="110" cy="112" r="4"/><circle cx="90" cy="112" r="4"/><circle cx="86" cy="94" r="4"/></g>
+</svg>

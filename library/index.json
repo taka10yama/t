@@ -1,13 +1,695 @@
 {
-  "generated_at": "2026-09-25T12:47:46.969Z",
-  "total": 0,
+  "generated_at": "2026-09-25T14:04:15.901Z",
+  "total": 24,
   "counts": {
-    "motion": 0,
-    "type": 0,
-    "layout": 0,
-    "icons": 0,
-    "palette": 0,
-    "pacing": 0
+    "motion": 5,
+    "type": 1,
+    "layout": 1,
+    "icons": 15,
+    "palette": 1,
+    "pacing": 1
   },
-  "parts": []
+  "parts": [
+    {
+      "id": "icons.architecture.castle",
+      "axis": "icons",
+      "mood": [
+        "親しみやすい",
+        "ポップ",
+        "懐かしい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "エンタメ",
+        "旅行・観光"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": false,
+      "created_at": "2026-09-25",
+      "file": "icons/architecture/castle.json",
+      "asset": "icons/architecture/castle.svg",
+      "preview": "previews/icons.architecture.castle.png"
+    },
+    {
+      "id": "icons.architecture.golden-pavilion",
+      "axis": "icons",
+      "mood": [
+        "親しみやすい",
+        "ポップ",
+        "懐かしい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "文化・芸術",
+        "旅行・観光"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": false,
+      "created_at": "2026-09-25",
+      "file": "icons/architecture/golden-pavilion.json",
+      "asset": "icons/architecture/golden-pavilion.svg",
+      "preview": "previews/icons.architecture.golden-pavilion.png"
+    },
+    {
+      "id": "icons.architecture.pagoda",
+      "axis": "icons",
+      "mood": [
+        "親しみやすい",
+        "ポップ",
+        "懐かしい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "文化・芸術",
+        "旅行・観光"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": false,
+      "created_at": "2026-09-25",
+      "file": "icons/architecture/pagoda.json",
+      "asset": "icons/architecture/pagoda.svg",
+      "preview": "previews/icons.architecture.pagoda.png"
+    },
+    {
+      "id": "icons.architecture.raised-granary",
+      "axis": "icons",
+      "mood": [
+        "親しみやすい",
+        "ポップ",
+        "懐かしい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "食"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": false,
+      "created_at": "2026-09-25",
+      "file": "icons/architecture/raised-granary.json",
+      "asset": "icons/architecture/raised-granary.svg",
+      "preview": "previews/icons.architecture.raised-granary.png"
+    },
+    {
+      "id": "icons.craft.jomon-pottery",
+      "axis": "icons",
+      "mood": [
+        "親しみやすい",
+        "ポップ",
+        "懐かしい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "文化・芸術"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": false,
+      "created_at": "2026-09-25",
+      "file": "icons/craft/jomon-pottery.json",
+      "asset": "icons/craft/jomon-pottery.svg",
+      "preview": "previews/icons.craft.jomon-pottery.png"
+    },
+    {
+      "id": "icons.culture.folding-fan",
+      "axis": "icons",
+      "mood": [
+        "親しみやすい",
+        "ポップ",
+        "懐かしい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "文化・芸術"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": false,
+      "created_at": "2026-09-25",
+      "file": "icons/culture/folding-fan.json",
+      "asset": "icons/culture/folding-fan.svg",
+      "preview": "previews/icons.culture.folding-fan.png"
+    },
+    {
+      "id": "icons.culture.paper-lantern",
+      "axis": "icons",
+      "mood": [
+        "親しみやすい",
+        "ポップ",
+        "懐かしい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "文化・芸術",
+        "旅行・観光"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": false,
+      "created_at": "2026-09-25",
+      "file": "icons/culture/paper-lantern.json",
+      "asset": "icons/culture/paper-lantern.svg",
+      "preview": "previews/icons.culture.paper-lantern.png"
+    },
+    {
+      "id": "icons.landscape.keyhole-tomb",
+      "axis": "icons",
+      "mood": [
+        "親しみやすい",
+        "ポップ",
+        "懐かしい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "地理・地政学"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": false,
+      "created_at": "2026-09-25",
+      "file": "icons/landscape/keyhole-tomb.json",
+      "asset": "icons/landscape/keyhole-tomb.svg",
+      "preview": "previews/icons.landscape.keyhole-tomb.png"
+    },
+    {
+      "id": "icons.map.grid-capital",
+      "axis": "icons",
+      "mood": [
+        "親しみやすい",
+        "ポップ",
+        "懐かしい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "地理・地政学"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": false,
+      "created_at": "2026-09-25",
+      "file": "icons/map/grid-capital.json",
+      "asset": "icons/map/grid-capital.svg",
+      "preview": "previews/icons.map.grid-capital.png"
+    },
+    {
+      "id": "icons.nature.plum-blossom",
+      "axis": "icons",
+      "mood": [
+        "親しみやすい",
+        "ポップ",
+        "懐かしい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "自然・環境",
+        "テクノロジー"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": false,
+      "created_at": "2026-09-25",
+      "file": "icons/nature/plum-blossom.json",
+      "asset": "icons/nature/plum-blossom.svg",
+      "preview": "previews/icons.nature.plum-blossom.png"
+    },
+    {
+      "id": "icons.technology.flip-phone",
+      "axis": "icons",
+      "mood": [
+        "親しみやすい",
+        "ポップ",
+        "懐かしい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "テクノロジー"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": false,
+      "created_at": "2026-09-25",
+      "file": "icons/technology/flip-phone.json",
+      "asset": "icons/technology/flip-phone.svg",
+      "preview": "previews/icons.technology.flip-phone.png"
+    },
+    {
+      "id": "icons.technology.radio",
+      "axis": "icons",
+      "mood": [
+        "親しみやすい",
+        "ポップ",
+        "懐かしい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "テクノロジー"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": false,
+      "created_at": "2026-09-25",
+      "file": "icons/technology/radio.json",
+      "asset": "icons/technology/radio.svg",
+      "preview": "previews/icons.technology.radio.png"
+    },
+    {
+      "id": "icons.transport.bullet-train",
+      "axis": "icons",
+      "mood": [
+        "親しみやすい",
+        "ポップ",
+        "懐かしい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "テクノロジー",
+        "旅行・観光"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": false,
+      "created_at": "2026-09-25",
+      "file": "icons/transport/bullet-train.json",
+      "asset": "icons/transport/bullet-train.svg",
+      "preview": "previews/icons.transport.bullet-train.png"
+    },
+    {
+      "id": "icons.transport.steam-locomotive",
+      "axis": "icons",
+      "mood": [
+        "親しみやすい",
+        "ポップ",
+        "懐かしい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "テクノロジー"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": false,
+      "created_at": "2026-09-25",
+      "file": "icons/transport/steam-locomotive.json",
+      "asset": "icons/transport/steam-locomotive.svg",
+      "preview": "previews/icons.transport.steam-locomotive.png"
+    },
+    {
+      "id": "icons.warrior.kabuto",
+      "axis": "icons",
+      "mood": [
+        "親しみやすい",
+        "ポップ",
+        "懐かしい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "エンタメ"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": false,
+      "created_at": "2026-09-25",
+      "file": "icons/warrior/kabuto.json",
+      "asset": "icons/warrior/kabuto.svg",
+      "preview": "previews/icons.warrior.kabuto.png"
+    },
+    {
+      "id": "layout.split-art-left",
+      "axis": "layout",
+      "mood": [
+        "知的",
+        "親しみやすい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "ランキング",
+        "文化・芸術"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": true,
+      "created_at": "2026-09-25",
+      "file": "layout/split-art-left.json",
+      "asset": "layout/split-art-left.html",
+      "preview": "previews/layout.split-art-left.png"
+    },
+    {
+      "id": "motion.pop-overshoot",
+      "axis": "motion",
+      "mood": [
+        "力強い",
+        "ポップ",
+        "断定的"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "エンタメ",
+        "子ども向け"
+      ],
+      "avoid": [
+        "金融",
+        "医療",
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": true,
+      "created_at": "2026-09-25",
+      "file": "motion/pop-overshoot.json",
+      "preview": "previews/motion.pop-overshoot.png"
+    },
+    {
+      "id": "motion.rise-overshoot",
+      "axis": "motion",
+      "mood": [
+        "軽快",
+        "親しみやすい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "エンタメ",
+        "ライフハック"
+      ],
+      "avoid": [
+        "訃報・災害",
+        "謝罪・お知らせ"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": true,
+      "created_at": "2026-09-25",
+      "file": "motion/rise-overshoot.json",
+      "preview": "previews/motion.rise-overshoot.png"
+    },
+    {
+      "id": "motion.stagger-art-2",
+      "axis": "motion",
+      "mood": [
+        "ポップ",
+        "親しみやすい"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "エンタメ",
+        "子ども向け"
+      ],
+      "avoid": [
+        "金融",
+        "医療",
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": true,
+      "created_at": "2026-09-25",
+      "file": "motion/stagger-art-2.json",
+      "preview": "previews/motion.stagger-art-2.png"
+    },
+    {
+      "id": "motion.stagger-text-4",
+      "axis": "motion",
+      "mood": [
+        "軽快",
+        "知的"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "ランキング",
+        "ニュース解説"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": true,
+      "created_at": "2026-09-25",
+      "file": "motion/stagger-text-4.json",
+      "preview": "previews/motion.stagger-text-4.png"
+    },
+    {
+      "id": "motion.wipe-reveal",
+      "axis": "motion",
+      "mood": [
+        "軽快",
+        "断定的"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "ランキング",
+        "ニュース解説"
+      ],
+      "avoid": [
+        "訃報・災害",
+        "謝罪・お知らせ"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": true,
+      "created_at": "2026-09-25",
+      "file": "motion/wipe-reveal.json",
+      "preview": "previews/motion.wipe-reveal.png"
+    },
+    {
+      "id": "pacing.act-then-hold",
+      "axis": "pacing",
+      "mood": [
+        "軽快"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "ランキング"
+      ],
+      "avoid": [
+        "訃報・災害"
+      ],
+      "formats": [
+        "short"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": true,
+      "created_at": "2026-09-25",
+      "file": "pacing/act-then-hold.json",
+      "preview": "previews/pacing.act-then-hold.png"
+    },
+    {
+      "id": "palette.traditional-single-ground",
+      "axis": "palette",
+      "mood": [
+        "懐かしい",
+        "温かい",
+        "ポップ"
+      ],
+      "fit": [
+        "歴史",
+        "文化・芸術",
+        "教育",
+        "旅行・観光"
+      ],
+      "avoid": [
+        "金融",
+        "医療",
+        "訃報・災害"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "自社",
+      "approved": false,
+      "created_at": "2026-09-25",
+      "file": "palette/traditional-single-ground.json",
+      "preview": "previews/palette.traditional-single-ground.png"
+    },
+    {
+      "id": "type.dela-zen-display",
+      "axis": "type",
+      "mood": [
+        "力強い",
+        "ポップ",
+        "断定的"
+      ],
+      "fit": [
+        "歴史",
+        "教育",
+        "エンタメ",
+        "ランキング"
+      ],
+      "avoid": [
+        "金融",
+        "医療",
+        "訃報・災害",
+        "高級ブランド"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "source_sample": "nihon-rekishi",
+      "license": "SIL OFL（Google Fonts）",
+      "approved": true,
+      "created_at": "2026-09-25",
+      "file": "type/dela-zen-display.json",
+      "preview": "previews/type.dela-zen-display.png"
+    }
+  ]
 }

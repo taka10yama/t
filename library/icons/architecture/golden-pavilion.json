@@ -1,0 +1,39 @@
+{
+  "id": "icons.architecture.golden-pavilion",
+  "axis": "icons",
+  "colors": 4,
+  "motifs": [
+    "金閣",
+    "寺院",
+    "室町",
+    "庭園"
+  ],
+  "default_colors": {
+    "c1": "#2F6E8E",
+    "c2": "#D9B23A",
+    "c3": "#3A2E1E",
+    "c4": "#E7C65A"
+  },
+  "mood": [
+    "親しみやすい",
+    "ポップ",
+    "懐かしい"
+  ],
+  "fit": [
+    "歴史",
+    "教育",
+    "文化・芸術",
+    "旅行・観光"
+  ],
+  "avoid": [
+    "訃報・災害"
+  ],
+  "formats": [
+    "short",
+    "long"
+  ],
+  "source_sample": "nihon-rekishi",
+  "license": "自社",
+  "approved": false,
+  "created_at": "2026-09-25"
+}

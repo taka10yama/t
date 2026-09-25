@@ -1,0 +1,54 @@
+{
+  "id": "type.dela-zen-display",
+  "axis": "type",
+  "display": {
+    "family": "Dela Gothic One",
+    "weight": 400,
+    "tracking_em": -0.02,
+    "leading": 1.05
+  },
+  "body": {
+    "family": "Zen Kaku Gothic New",
+    "weight": 700,
+    "tracking_em": 0,
+    "leading": 1.45
+  },
+  "scale_ratio": 5,
+  "autosize": {
+    "2": 190,
+    "3": 150,
+    "4": 120,
+    "5+": 96
+  },
+  "max_chars_per_line": 15,
+  "stage_px": [
+    1280,
+    720
+  ],
+  "notes": "autosize は 1280×720 のステージ基準。2字=190px は実測、3字以上は文字の列の幅 530px に収まるよう決めた値",
+  "mood": [
+    "力強い",
+    "ポップ",
+    "断定的"
+  ],
+  "fit": [
+    "歴史",
+    "教育",
+    "エンタメ",
+    "ランキング"
+  ],
+  "avoid": [
+    "金融",
+    "医療",
+    "訃報・災害",
+    "高級ブランド"
+  ],
+  "formats": [
+    "short",
+    "long"
+  ],
+  "source_sample": "nihon-rekishi",
+  "license": "SIL OFL（Google Fonts）",
+  "approved": true,
+  "created_at": "2026-09-25"
+}

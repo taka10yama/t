@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+<rect x="24" y="24" width="152" height="152" fill="var(--c1)"/>
+<g fill="var(--c2)"><rect x="28" y="28" width="30" height="30" rx="2"/><rect x="142" y="28" width="30" height="30" rx="2"/><rect x="28" y="66" width="30" height="30" rx="2"/><rect x="66" y="66" width="26" height="30" rx="2"/><rect x="108" y="66" width="26" height="30" rx="2"/><rect x="142" y="66" width="30" height="30" rx="2"/><rect x="28" y="104" width="30" height="30" rx="2"/><rect x="66" y="104" width="26" height="30" rx="2"/><rect x="108" y="104" width="26" height="30" rx="2"/><rect x="142" y="104" width="30" height="30" rx="2"/><rect x="28" y="142" width="30" height="30" rx="2"/><rect x="66" y="142" width="26" height="30" rx="2"/><rect x="108" y="142" width="26" height="30" rx="2"/><rect x="142" y="142" width="30" height="30" rx="2"/></g>
+<rect x="66" y="28" width="68" height="30" rx="2" fill="var(--c3)"/>
+<rect x="24" y="24" width="152" height="152" fill="none" stroke="var(--c3)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

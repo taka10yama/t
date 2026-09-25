@@ -1,0 +1,37 @@
+{
+  "id": "icons.craft.jomon-pottery",
+  "axis": "icons",
+  "colors": 3,
+  "motifs": [
+    "縄文土器",
+    "土器",
+    "縄文",
+    "先史"
+  ],
+  "default_colors": {
+    "c1": "#5E3A1F",
+    "c2": "#8E5530",
+    "c3": "#D69A62"
+  },
+  "mood": [
+    "親しみやすい",
+    "ポップ",
+    "懐かしい"
+  ],
+  "fit": [
+    "歴史",
+    "教育",
+    "文化・芸術"
+  ],
+  "avoid": [
+    "訃報・災害"
+  ],
+  "formats": [
+    "short",
+    "long"
+  ],
+  "source_sample": "nihon-rekishi",
+  "license": "自社",
+  "approved": false,
+  "created_at": "2026-09-25"
+}

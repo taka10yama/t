@@ -1,0 +1,37 @@
+{
+  "id": "motion.stagger-art-2",
+  "axis": "motion",
+  "kind": "stagger",
+  "step_ms": [
+    0,
+    150
+  ],
+  "applies_to": [
+    "disc",
+    "art"
+  ],
+  "notes": "背景の円を先に、図像を 150ms 遅れて出す。円が台座、図像が主役に見える。各要素の動きは motion.pop-overshoot を想定",
+  "mood": [
+    "ポップ",
+    "親しみやすい"
+  ],
+  "fit": [
+    "歴史",
+    "教育",
+    "エンタメ",
+    "子ども向け"
+  ],
+  "avoid": [
+    "金融",
+    "医療",
+    "訃報・災害"
+  ],
+  "formats": [
+    "short",
+    "long"
+  ],
+  "source_sample": "nihon-rekishi",
+  "license": "自社",
+  "approved": true,
+  "created_at": "2026-09-25"
+}

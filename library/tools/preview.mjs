@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
 import { createRequire } from 'node:module';
-import { parseArgs, companion, previewPath, parseBezier, readJSON, p, die } from './lib.mjs';
+import { parseArgs, companion, previewPath, parseBezier, contrast, die } from './lib.mjs';
 import { resolveTarget } from './validate.mjs';
 
 const W = 1280;
@@ -65,9 +65,10 @@ function motionPage(d) {
   }
   const dur = d.duration_ms;
   const exit = d.kind === 'exit';
-  const from = { transform: d.transform_from || 'none', opacity: d.opacity_from ?? 1 };
-  const to = { transform: d.transform_to || 'none', opacity: d.opacity_to ?? 1 };
-  const kf = exit ? [{ transform: 'none', opacity: 1 }, to] : d.kind === 'emphasis' ? [{ transform: 'none' }, { transform: d.transform_peak || 'scale(1.15)' }, { transform: 'none' }] : [from, { transform: 'none', opacity: 1 }];
+  const rest = { transform: 'none', opacity: 1, ...(d.clip_from || d.clip_to ? { clipPath: 'inset(0 0 0 0)' } : {}) };
+  const from = { ...rest, transform: d.transform_from || 'none', opacity: d.opacity_from ?? 1, ...(d.clip_from ? { clipPath: d.clip_from } : {}) };
+  const to = { ...rest, transform: d.transform_to || 'none', opacity: d.opacity_to ?? 1, ...(d.clip_to ? { clipPath: d.clip_to } : {}) };
+  const kf = exit ? [rest, to] : d.kind === 'emphasis' ? [{ transform: 'none' }, { transform: d.transform_peak || 'scale(1.15)' }, { transform: 'none' }] : [from, rest];
   const frames = [0, 0.5, 1];
   const cells = frames.map((f) => `<div class="cell"><div class="t">${Math.round(f * 100)}% (${Math.round(dur * f)}ms)</div><div class="ghost"></div>${!exit && d.kind !== 'emphasis' ? `<div class="pose" style="transform:${esc(from.transform)}"></div>` : ''}<div class="obj" data-t="${dur * f}"></div></div>`).join('');
   return {
@@ -94,7 +95,8 @@ function fontLink(d) {
 function typePage(d) {
   const sizes = Object.entries(d.autosize);
   const bodyPx = Math.round(Number(sizes.at(-1)[1]) / d.scale_ratio) || 24;
-  const scale = 0.45; // autosize values are for 1920x1080; scale to the board
+  // autosize px are in the part's stage size (default 1920x1080); fit them to the board.
+  const scale = 864 / ((d.stage_px && d.stage_px[0]) || 1920);
   const sample = '明治維新と近代国家の成立'.slice(0, d.max_chars_per_line);
   const specimens = sizes.map(([chars, px]) => {
     const text = sample.slice(0, chars === '5+' ? 6 : Number(chars));
@@ -117,8 +119,8 @@ function layoutPage(d, part) {
   const [aw, ah] = d.aspect[0].split(':').map(Number);
   const frameH = H - 110;
   const frameW = Math.min(W - 64, Math.round((frameH * aw) / ah));
-  const nativeW = aw >= ah ? 1920 : 1080;
-  const nativeH = Math.round((nativeW * ah) / aw);
+  const nativeW = (d.stage_px && d.stage_px[0]) || (aw >= ah ? 1920 : 1080);
+  const nativeH = (d.stage_px && d.stage_px[1]) || Math.round((nativeW * ah) / aw);
   return {
     html: shell(d.id, `${d.aspect.join(', ')} / grid ${d.grid} / padding ${d.padding.join(' ')} / ${d.align}`,
       `<div class="frame" style="width:${frameW}px;height:${Math.round((frameW * ah) / aw)}px"><iframe srcdoc="${esc(html)}" style="width:${nativeW}px;height:${nativeH}px;transform:scale(${frameW / nativeW})"></iframe></div><div class="wf">${esc(d.wireframe)}</div>`,
@@ -130,13 +132,17 @@ function layoutPage(d, part) {
 // ---------- icons ----------
 function iconPage(d, part) {
   const svg = fs.readFileSync(companion(part, '.svg'), 'utf8');
-  const vars = NEUTRAL_VARS.map((c, i) => `--c${i + 1}:${c}`).join(';');
+  // default_colors = the colors the icon was drawn with; neutral set shows it survives re-coloring.
+  const own = d.default_colors ? Object.keys(d.default_colors).sort().map((k) => d.default_colors[k]) : null;
+  const main = own || NEUTRAL_VARS;
+  const vars = (cs) => cs.map((c, i) => `--c${i + 1}:${c}`).join(';');
   const sizes = [320, 160, 64, 32];
+  const legend = (cs, note) => `<div class="legend">${cs.map((c, i) => `<span><i style="background:${c}"></i>--c${i + 1} ${own ? c : ''}</span>`).join('')}${note}</div>`;
   return {
     html: shell(d.id, `${d.colors}色 / motifs: ${d.motifs.join('・')}`,
-      `<div class="row" style="${vars}">${sizes.map((s) => `<div class="ic" style="width:${s}px;height:${s}px">${svg}</div>`).join('')}
-      <div class="ic dark" style="width:160px;height:160px">${svg}</div></div>
-      <div class="legend">${NEUTRAL_VARS.map((c, i) => `<span><i style="background:${c}"></i>--c${i + 1}</span>`).join('')}（仮の中立色。本番は palette の規則で差し込む）</div>`,
+      `<div class="row" style="${vars(main)}">${sizes.map((s) => `<div class="ic" style="width:${s}px;height:${s}px">${svg}</div>`).join('')}
+      <div class="ic dark" style="width:160px;height:160px">${svg}</div>${own ? `<div class="ic" style="width:160px;height:160px;${vars(NEUTRAL_VARS)}">${svg}</div>` : ''}</div>
+      ${legend(main.slice(0, d.colors), own ? '（描いたときの色。右端は中立色に差し替えた例）' : '（仮の中立色。本番は palette の規則で差し込む）')}`,
       { css: `.row{display:flex;gap:28px;align-items:flex-end;margin-top:30px}.ic{background:#fff;border:1px solid ${BOARD.line}}
       .ic.dark{background:#1b1b1b}.ic svg{width:100%;height:100%;display:block}
       .legend{margin-top:40px;color:${BOARD.sub};display:flex;gap:16px;align-items:center}
@@ -148,24 +154,34 @@ function iconPage(d, part) {
 function palettePage(d) {
   const roles = d.roles || ['bg', 'ink', 'acc', 'disc'];
   const col = (ex, r) => ex[roles.indexOf(r)];
-  const cards = d.examples.map((ex) => {
-    const bg = col(ex, 'bg');
-    const ink = col(ex, 'ink');
-    const acc = col(ex, 'acc');
-    const disc = col(ex, 'disc');
-    return `<div class="card" style="background:${bg};color:${ink}">
+  // Up to 5 cards per row; with many examples the cards shrink but keep 16:9 so text never reflows.
+  const n = d.examples.length;
+  const perRow = Math.min(5, n);
+  const rows = Math.ceil(n / perRow);
+  const cw = Math.floor((W - 64 - (perRow - 1) * 16) / perRow);
+  const ch = Math.min(Math.round((cw * 9) / 16), Math.floor((520 - (rows - 1) * 16) / rows) - 22);
+  const k = ch / 260; // type scale relative to a 260px-high card
+  const cards = d.examples.map((ex, j) => {
+    const [bg, ink, acc, disc] = ['bg', 'ink', 'acc', 'disc'].map((r) => col(ex, r));
+    const label = (d.example_labels && d.example_labels[j]) || `examples[${j}]`;
+    return `<figure><div class="card" style="background:${bg};color:${ink};height:${ch}px">
       ${disc ? `<div class="disc" style="background:${disc}"></div>` : ''}
-      <div class="num" style="color:${acc || ink}">01</div><div class="ttl">見出しサンプル</div><div class="bd">本文の読みやすさを確認する文章。</div>
-      <div class="sw">${ex.map((c, i) => `<span><i style="background:${c}"></i>${roles[i]} ${c}</span>`).join('')}</div></div>`;
+      <div class="num" style="color:${acc || ink}">01</div><div class="ttl">見出し</div><div class="bd">本文の読みやすさ</div>
+      <div class="sw">${ex.map((c) => `<i style="background:${c}"></i>`).join('')}</div></div>
+      <figcaption>${esc(label)}　ink ${contrast(bg, ink).toFixed(1)} / acc ${acc ? contrast(bg, acc).toFixed(1) : '-'}</figcaption></figure>`;
   }).join('');
   return {
-    html: shell(d.id, `min_contrast_ink ${d.min_contrast_ink}`, `<div class="cards">${cards}</div><p class="rule">${esc(d.rule)}</p>`, {
-      css: `.cards{display:flex;gap:20px;height:460px}.card{flex:1;position:relative;padding:36px;overflow:hidden;border:1px solid ${BOARD.line}}
-      .disc{position:absolute;right:-60px;top:-60px;width:320px;height:320px;border-radius:50%}
-      .num{font-size:44px;font-weight:800;position:relative}.ttl{font-size:52px;font-weight:800;position:relative}.bd{font-size:20px;position:relative;margin-top:8px}
-      .sw{position:absolute;left:36px;bottom:24px;display:flex;flex-direction:column;gap:4px;font:12px ui-monospace,monospace}
-      .sw i{display:inline-block;width:14px;height:14px;margin-right:6px;vertical-align:-2px;border:1px solid #fff6}
-      .rule{margin-top:18px;font-size:15px}`,
+    html: shell(d.id, `min_contrast_ink ${d.min_contrast_ink}${d.min_contrast_acc ? ` / min_contrast_acc ${d.min_contrast_acc}` : ''} / roles ${roles.join(',')}`,
+      `<div class="cards" style="grid-template-columns:repeat(${perRow},${cw}px)">${cards}</div><p class="rule">${esc(d.rule)}</p>`, {
+      css: `.cards{display:grid;gap:16px}figure{margin:0}.card{position:relative;padding:${Math.round(22 * k)}px;overflow:hidden;border:1px solid ${BOARD.line}}
+      .disc{position:absolute;right:${Math.round(-40 * k)}px;top:${Math.round(-40 * k)}px;width:${Math.round(200 * k)}px;height:${Math.round(200 * k)}px;border-radius:50%}
+      .num{font-size:${Math.round(30 * k)}px;font-weight:800;position:relative;line-height:1}
+      .ttl{font-size:${Math.round(56 * k)}px;font-weight:800;position:relative;line-height:1.15;white-space:nowrap}
+      .bd{font-size:${Math.round(20 * k)}px;position:relative;margin-top:${Math.round(6 * k)}px;white-space:nowrap}
+      .sw{position:absolute;right:8px;bottom:8px;display:flex;gap:3px}
+      .sw i{display:block;width:${Math.max(10, Math.round(18 * k))}px;height:${Math.max(10, Math.round(18 * k))}px;border:1px solid #fff8;outline:1px solid #0003}
+      figcaption{font:12px ui-monospace,monospace;color:${BOARD.sub};margin-top:4px}
+      .rule{margin-top:14px;font-size:14px;line-height:1.5}`,
     }),
   };
 }

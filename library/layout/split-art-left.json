@@ -1,0 +1,41 @@
+{
+  "id": "layout.split-art-left",
+  "axis": "layout",
+  "aspect": [
+    "16:9"
+  ],
+  "grid": "560px 1fr",
+  "padding": [
+    0,
+    90,
+    0,
+    70
+  ],
+  "align": "left",
+  "wireframe": "[ ART 460 ] [ num / TITLE / date / body ]",
+  "stage_px": [
+    1280,
+    720
+  ],
+  "mood": [
+    "知的",
+    "親しみやすい"
+  ],
+  "fit": [
+    "歴史",
+    "教育",
+    "ランキング",
+    "文化・芸術"
+  ],
+  "avoid": [
+    "訃報・災害"
+  ],
+  "formats": [
+    "short",
+    "long"
+  ],
+  "source_sample": "nihon-rekishi",
+  "license": "自社",
+  "approved": true,
+  "created_at": "2026-09-25"
+}

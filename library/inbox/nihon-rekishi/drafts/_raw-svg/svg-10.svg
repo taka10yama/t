@@ -1,0 +1,3 @@
+<svg viewBox="0 0 200 200"><path d="M100 4v24" stroke="#E6D9B8" stroke-width="4"/><rect x="72" y="26" width="56" height="16" rx="4" fill="#1A1D24"/>
+<ellipse cx="100" cy="104" rx="62" ry="68" fill="#D0413A"/><g fill="none" stroke="#9E2A24" stroke-width="3"><ellipse cx="100" cy="104" rx="62" ry="24"/><ellipse cx="100" cy="104" rx="60" ry="46"/><path d="M40 104h120"/></g>
+<rect x="72" y="166" width="56" height="16" rx="4" fill="#1A1D24"/><circle cx="100" cy="104" r="22" fill="#FBEFD8"/><circle cx="100" cy="104" r="10" fill="#D0413A"/></svg>

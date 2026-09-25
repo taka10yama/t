@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+<circle cx="150" cy="46" r="26" fill="var(--c1)"/>
+<path d="M100 170L24 96A108 108 0 0 1 176 96z" fill="var(--c2)"/><path d="M100 170L48 118A74 74 0 0 1 152 118z" fill="var(--c3)"/>
+<g stroke="var(--c4)" stroke-linecap="round" stroke-width="3"><path d="M100 170L24 96M100 170L42 76M100 170L66 62M100 170L100 58M100 170L134 62M100 170L158 76M100 170L176 96"/></g><circle cx="100" cy="170" r="7" fill="var(--c4)"/>
+</svg>

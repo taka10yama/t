@@ -1,0 +1,39 @@
+{
+  "id": "motion.stagger-text-4",
+  "axis": "motion",
+  "kind": "stagger",
+  "step_ms": [
+    0,
+    80,
+    140,
+    140
+  ],
+  "applies_to": [
+    "num",
+    "title",
+    "date",
+    "body"
+  ],
+  "notes": "番号と見出しはほぼ同時、年代と本文は間を置く。各要素の動きは motion.rise-overshoot を想定",
+  "mood": [
+    "軽快",
+    "知的"
+  ],
+  "fit": [
+    "歴史",
+    "教育",
+    "ランキング",
+    "ニュース解説"
+  ],
+  "avoid": [
+    "訃報・災害"
+  ],
+  "formats": [
+    "short",
+    "long"
+  ],
+  "source_sample": "nihon-rekishi",
+  "license": "自社",
+  "approved": true,
+  "created_at": "2026-09-25"
+}

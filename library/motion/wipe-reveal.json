@@ -1,0 +1,33 @@
+{
+  "id": "motion.wipe-reveal",
+  "axis": "motion",
+  "kind": "enter",
+  "curve": "cubic-bezier(.7,0,.2,1)",
+  "duration_ms": 550,
+  "delay_ms": 0,
+  "pair_exit": null,
+  "notes": "シーン全体の切り替え用。右から左へ開く。退場は持たず、次のシーンが前のシーンにかぶさって消す",
+  "clip_from": "inset(0 0 0 100%)",
+  "mood": [
+    "軽快",
+    "断定的"
+  ],
+  "fit": [
+    "歴史",
+    "教育",
+    "ランキング",
+    "ニュース解説"
+  ],
+  "avoid": [
+    "訃報・災害",
+    "謝罪・お知らせ"
+  ],
+  "formats": [
+    "short",
+    "long"
+  ],
+  "source_sample": "nihon-rekishi",
+  "license": "自社",
+  "approved": true,
+  "created_at": "2026-09-25"
+}

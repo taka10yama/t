@@ -1,0 +1,34 @@
+{
+  "id": "motion.rise-overshoot",
+  "axis": "motion",
+  "kind": "enter",
+  "curve": "cubic-bezier(.2,.9,.3,1.2)",
+  "duration_ms": 500,
+  "delay_ms": 0,
+  "transform_from": "translateY(50px)",
+  "opacity_from": 0,
+  "pair_exit": null,
+  "notes": "テキスト用のせり上がり。終わり際にわずかに行き過ぎる。50px は 1280×720 のステージ基準（1920 なら 75px）",
+  "mood": [
+    "軽快",
+    "親しみやすい"
+  ],
+  "fit": [
+    "歴史",
+    "教育",
+    "エンタメ",
+    "ライフハック"
+  ],
+  "avoid": [
+    "訃報・災害",
+    "謝罪・お知らせ"
+  ],
+  "formats": [
+    "short",
+    "long"
+  ],
+  "source_sample": "nihon-rekishi",
+  "license": "自社",
+  "approved": true,
+  "created_at": "2026-09-25"
+}

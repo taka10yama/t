@@ -41,7 +41,7 @@ function checkMotion(d, err) {
   if (b && (b[0] < 0 || b[0] > 1 || b[2] < 0 || b[2] > 1)) err('cubic-bezier の x1/x2 は 0〜1');
   if (!(d.duration_ms >= 150 && d.duration_ms <= 900)) err(`duration_ms=${d.duration_ms} は 150〜900ms の範囲外`);
   if (d.delay_ms !== undefined && !(d.delay_ms >= 0)) err('delay_ms は 0 以上');
-  if (d.kind === 'enter' && d.transform_from === undefined && d.opacity_from === undefined) err('enter には transform_from か opacity_from が必要');
+  if (d.kind === 'enter' && d.transform_from === undefined && d.opacity_from === undefined && d.clip_from === undefined) err('enter には transform_from / opacity_from / clip_from のどれかが必要');
   if (d.kind === 'exit' && d.transform_to === undefined && d.opacity_to === undefined) err('exit には transform_to か opacity_to が必要');
 }
 
@@ -119,6 +119,11 @@ function checkPalette(d, err) {
     if (bi < 0 || ii < 0 || !parseColor(ex[bi]) || !parseColor(ex[ii])) return;
     const r = contrast(ex[bi], ex[ii]);
     if (r < d.min_contrast_ink) err(`examples[${n}] ink/bg のコントラスト ${r.toFixed(2)} < ${d.min_contrast_ink}`);
+    const ai = roles.indexOf('acc');
+    if (d.min_contrast_acc !== undefined && ai >= 0 && parseColor(ex[ai])) {
+      const ra = contrast(ex[bi], ex[ai]);
+      if (ra < d.min_contrast_acc) err(`examples[${n}] acc/bg のコントラスト ${ra.toFixed(2)} < ${d.min_contrast_acc}`);
+    }
   });
 }
 
@@ -142,7 +147,8 @@ function isDuplicate(a, b, partA, partB) {
       const [x, y] = [parseBezier(a.curve), parseBezier(b.curve)];
       const sameCurve = x && y ? x.every((v, i) => near(v, y[i], 0.05)) : a.curve === b.curve;
       return sameCurve && near(a.duration_ms, b.duration_ms, 50)
-        && (a.transform_from || a.transform_to) === (b.transform_from || b.transform_to);
+        && (a.transform_from || a.transform_to) === (b.transform_from || b.transform_to)
+        && (a.clip_from || a.clip_to) === (b.clip_from || b.clip_to);
     }
     case 'type':
       return ['display', 'body'].every((r) => a[r]?.family === b[r]?.family && a[r]?.weight === b[r]?.weight

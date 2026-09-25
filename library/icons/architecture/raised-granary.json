@@ -1,0 +1,39 @@
+{
+  "id": "icons.architecture.raised-granary",
+  "axis": "icons",
+  "colors": 5,
+  "motifs": [
+    "高床倉庫",
+    "稲作",
+    "弥生",
+    "農業"
+  ],
+  "default_colors": {
+    "c1": "#6B4A2B",
+    "c2": "#A87A4C",
+    "c3": "#7A5C2E",
+    "c4": "#4F6B2A",
+    "c5": "#F4E6B0"
+  },
+  "mood": [
+    "親しみやすい",
+    "ポップ",
+    "懐かしい"
+  ],
+  "fit": [
+    "歴史",
+    "教育",
+    "食"
+  ],
+  "avoid": [
+    "訃報・災害"
+  ],
+  "formats": [
+    "short",
+    "long"
+  ],
+  "source_sample": "nihon-rekishi",
+  "license": "自社",
+  "approved": false,
+  "created_at": "2026-09-25"
+}

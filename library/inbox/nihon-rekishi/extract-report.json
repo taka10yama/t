@@ -1,0 +1,727 @@
+{
+  "sample": "nihon-rekishi",
+  "source_type": "own",
+  "generated_at": "2026-09-25T13:59:27.963Z",
+  "motion": {
+    "curves": [
+      {
+        "value": "cubic-bezier(.2,.9,.3,1.2)",
+        "count": 3
+      },
+      {
+        "value": "cubic-bezier(.3,1.6,.5,1)",
+        "count": 2
+      },
+      {
+        "value": "cubic-bezier(.7,0,.2,1)",
+        "count": 1
+      },
+      {
+        "value": "cubic-bezier(.3,1.5,.5,1)",
+        "count": 1
+      }
+    ],
+    "keyframes": [
+      {
+        "name": "wipe",
+        "body": "from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0 0 0 0)}"
+      },
+      {
+        "name": "pop",
+        "body": "from{transform:scale(.4) rotate(-8deg);opacity:0}to{transform:none;opacity:1}"
+      },
+      {
+        "name": "rise",
+        "body": "from{transform:translateY(50px);opacity:0}to{transform:none;opacity:1}"
+      }
+    ],
+    "animated_rules": [
+      {
+        "selector": ".scene.active",
+        "decl": [
+          "animation:wipe .55s cubic-bezier(.7,0,.2,1) both"
+        ]
+      },
+      {
+        "selector": ".active .disc",
+        "decl": [
+          "animation:pop .6s .15s cubic-bezier(.3,1.5,.5,1) both"
+        ]
+      },
+      {
+        "selector": ".active .art svg",
+        "decl": [
+          "animation:pop .7s .3s cubic-bezier(.3,1.6,.5,1) both"
+        ]
+      },
+      {
+        "selector": ".active .num,.active .era,.active .date,.active .fact",
+        "decl": [
+          "animation:rise .5s cubic-bezier(.2,.9,.3,1.2) both"
+        ]
+      },
+      {
+        "selector": ".active .num",
+        "decl": [
+          "animation-delay:.3s"
+        ]
+      },
+      {
+        "selector": ".active .era",
+        "decl": [
+          "animation-delay:.38s"
+        ]
+      },
+      {
+        "selector": ".active .date",
+        "decl": [
+          "animation-delay:.52s"
+        ]
+      },
+      {
+        "selector": ".active .fact",
+        "decl": [
+          "animation-delay:.66s"
+        ]
+      },
+      {
+        "selector": ".active .sun",
+        "decl": [
+          "animation:pop .6s .1s cubic-bezier(.3,1.6,.5,1) both"
+        ]
+      },
+      {
+        "selector": ".active .big",
+        "decl": [
+          "animation:rise .55s .3s cubic-bezier(.2,.9,.3,1.2) both"
+        ]
+      },
+      {
+        "selector": ".active .small",
+        "decl": [
+          "animation:rise .5s .55s cubic-bezier(.2,.9,.3,1.2) both"
+        ]
+      },
+      {
+        "selector": ".paused .stage *",
+        "decl": [
+          "animation-play-state:paused!important"
+        ]
+      },
+      {
+        "selector": ".stage *",
+        "decl": [
+          "animation-duration:.01ms!important",
+          "animation-delay:0s!important"
+        ]
+      }
+    ],
+    "durations_ms": [
+      {
+        "value": "300",
+        "count": 3
+      },
+      {
+        "value": "550",
+        "count": 3
+      },
+      {
+        "value": "500",
+        "count": 2
+      },
+      {
+        "value": "600",
+        "count": 2
+      },
+      {
+        "value": "0",
+        "count": 1
+      },
+      {
+        "value": "100",
+        "count": 1
+      },
+      {
+        "value": "150",
+        "count": 1
+      },
+      {
+        "value": "380",
+        "count": 1
+      },
+      {
+        "value": "520",
+        "count": 1
+      },
+      {
+        "value": "660",
+        "count": 1
+      },
+      {
+        "value": "700",
+        "count": 1
+      },
+      {
+        "value": "0.01",
+        "count": 1
+      }
+    ],
+    "js_timings": [
+      {
+        "value": "t=0",
+        "count": 2
+      }
+    ],
+    "js_timeouts_ms": []
+  },
+  "type": {
+    "families": [
+      {
+        "value": "\"Zen Kaku Gothic New\",\"Hiragino Sans\",\"Noto Sans JP\",sans-serif",
+        "count": 1
+      },
+      {
+        "value": "\"Zen Kaku Gothic New\",sans-serif",
+        "count": 1
+      },
+      {
+        "value": "\"Dela Gothic One\",\"Zen Kaku Gothic New\",sans-serif",
+        "count": 1
+      },
+      {
+        "value": "\"Dela Gothic One\",sans-serif",
+        "count": 1
+      }
+    ],
+    "font_links": [
+      "https://fonts.googleapis.com",
+      "https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap"
+    ],
+    "sizes": [
+      {
+        "value": "26px",
+        "count": 1
+      },
+      {
+        "value": "var(--es,190px)",
+        "count": 1
+      },
+      {
+        "value": "40px",
+        "count": 1
+      },
+      {
+        "value": "38px",
+        "count": 1
+      },
+      {
+        "value": "170px",
+        "count": 1
+      },
+      {
+        "value": "44px",
+        "count": 1
+      },
+      {
+        "value": "15px",
+        "count": 1
+      },
+      {
+        "value": "13px",
+        "count": 1
+      }
+    ],
+    "letter_spacing": [
+      {
+        "value": ".04em",
+        "count": 1
+      },
+      {
+        "value": "-.02em",
+        "count": 1
+      }
+    ],
+    "line_height": [
+      {
+        "value": "1.05",
+        "count": 1
+      },
+      {
+        "value": "1.45",
+        "count": 1
+      },
+      {
+        "value": "1.1",
+        "count": 1
+      }
+    ],
+    "weights": [
+      {
+        "value": "700",
+        "count": 6
+      },
+      {
+        "value": "400",
+        "count": 1
+      }
+    ]
+  },
+  "layout": {
+    "grid_columns": [
+      {
+        "value": "560px 1fr",
+        "count": 1
+      },
+      {
+        "value": "1fr",
+        "count": 1
+      }
+    ],
+    "grid_rows": [],
+    "padding": [
+      {
+        "value": "0",
+        "count": 1
+      },
+      {
+        "value": "0 90px 0 70px",
+        "count": 1
+      },
+      {
+        "value": "10px 20px",
+        "count": 1
+      },
+      {
+        "value": "6px 10px",
+        "count": 1
+      }
+    ],
+    "gap": [
+      {
+        "value": "12px",
+        "count": 1
+      },
+      {
+        "value": "4px",
+        "count": 1
+      }
+    ],
+    "alignment": [
+      {
+        "value": "center",
+        "count": 5
+      }
+    ]
+  },
+  "palette": {
+    "custom_properties": [
+      {
+        "name": "--page",
+        "value": "#E9E6DF"
+      },
+      {
+        "name": "--chrome",
+        "value": "#1E2A36"
+      },
+      {
+        "name": "--muted",
+        "value": "#5E6A74"
+      },
+      {
+        "name": "--bar",
+        "value": "#CFCAC0"
+      },
+      {
+        "name": "--page",
+        "value": "#12181E"
+      },
+      {
+        "name": "--chrome",
+        "value": "#E6E2D8"
+      },
+      {
+        "name": "--muted",
+        "value": "#8E99A2"
+      },
+      {
+        "name": "--bar",
+        "value": "#2A333C"
+      },
+      {
+        "name": "--page",
+        "value": "#12181E"
+      },
+      {
+        "name": "--chrome",
+        "value": "#E6E2D8"
+      },
+      {
+        "name": "--muted",
+        "value": "#8E99A2"
+      },
+      {
+        "name": "--bar",
+        "value": "#2A333C"
+      }
+    ],
+    "colors": [
+      {
+        "value": "#e3b341",
+        "count": 10
+      },
+      {
+        "value": "#fbefd8",
+        "count": 8
+      },
+      {
+        "value": "#1b1e22",
+        "count": 7
+      },
+      {
+        "value": "#1e2a36",
+        "count": 5
+      },
+      {
+        "value": "#d0413a",
+        "count": 4
+      },
+      {
+        "value": "#3a2e1e",
+        "count": 4
+      },
+      {
+        "value": "#23282e",
+        "count": 4
+      },
+      {
+        "value": "#1a1d24",
+        "count": 3
+      },
+      {
+        "value": "#d9b23a",
+        "count": 3
+      },
+      {
+        "value": "#e7c65a",
+        "count": 3
+      },
+      {
+        "value": "#fbf8f1",
+        "count": 3
+      },
+      {
+        "value": "#1f4e9e",
+        "count": 3
+      },
+      {
+        "value": "#f2a7bd",
+        "count": 3
+      },
+      {
+        "value": "#12181e",
+        "count": 2
+      },
+      {
+        "value": "#e6e2d8",
+        "count": 2
+      },
+      {
+        "value": "#8e99a2",
+        "count": 2
+      },
+      {
+        "value": "#2a333c",
+        "count": 2
+      },
+      {
+        "value": "#8e5530",
+        "count": 2
+      },
+      {
+        "value": "#3a2a52",
+        "count": 2
+      },
+      {
+        "value": "#edeff0",
+        "count": 2
+      },
+      {
+        "value": "#7a4a2a",
+        "count": 2
+      },
+      {
+        "value": "#ffffff",
+        "count": 2
+      },
+      {
+        "value": "#1f2a36",
+        "count": 2
+      },
+      {
+        "value": "#6e7884",
+        "count": 2
+      },
+      {
+        "value": "#3c5a78",
+        "count": 2
+      },
+      {
+        "value": "#f2b84b",
+        "count": 2
+      },
+      {
+        "value": "#c73a33",
+        "count": 2
+      },
+      {
+        "value": "#f4f1ec",
+        "count": 2
+      },
+      {
+        "value": "#e9e6df",
+        "count": 1
+      },
+      {
+        "value": "#5e6a74",
+        "count": 1
+      },
+      {
+        "value": "#cfcac0",
+        "count": 1
+      },
+      {
+        "value": "rgba(0,0,0,.25)",
+        "count": 1
+      },
+      {
+        "value": "#fff",
+        "count": 1
+      },
+      {
+        "value": "#2e7db5",
+        "count": 1
+      },
+      {
+        "value": "#d69a62",
+        "count": 1
+      },
+      {
+        "value": "#6b4a2b",
+        "count": 1
+      },
+      {
+        "value": "#a87a4c",
+        "count": 1
+      },
+      {
+        "value": "#7a5c2e",
+        "count": 1
+      },
+      {
+        "value": "#5e4522",
+        "count": 1
+      },
+      {
+        "value": "#4f6b2a",
+        "count": 1
+      }
+    ]
+  },
+  "icons": [
+    {
+      "file": "drafts/_raw-svg/svg-01.svg",
+      "viewBox": "0 0 200 200",
+      "colors": [
+        "#8e5530",
+        "#d69a62"
+      ],
+      "has_gradient": false,
+      "has_filter": false,
+      "elements": 6
+    },
+    {
+      "file": "drafts/_raw-svg/svg-02.svg",
+      "viewBox": "0 0 200 200",
+      "colors": [
+        "#6b4a2b",
+        "#a87a4c",
+        "#7a5c2e",
+        "#5e4522",
+        "#4f6b2a",
+        "#f4e6b0"
+      ],
+      "has_gradient": false,
+      "has_filter": false,
+      "elements": 11
+    },
+    {
+      "file": "drafts/_raw-svg/svg-03.svg",
+      "viewBox": "0 0 200 200",
+      "colors": [
+        "#4a8fb8",
+        "#3f5a22",
+        "#56752f"
+      ],
+      "has_gradient": false,
+      "has_filter": false,
+      "elements": 5
+    },
+    {
+      "file": "drafts/_raw-svg/svg-04.svg",
+      "viewBox": "0 0 200 200",
+      "colors": [
+        "#d0413a",
+        "#1a1d24",
+        "#e3b341"
+      ],
+      "has_gradient": false,
+      "has_filter": false,
+      "elements": 11
+    },
+    {
+      "file": "drafts/_raw-svg/svg-05.svg",
+      "viewBox": "0 0 200 200",
+      "colors": [
+        "#fbefd8"
+      ],
+      "has_gradient": false,
+      "has_filter": false,
+      "elements": 4
+    },
+    {
+      "file": "drafts/_raw-svg/svg-06.svg",
+      "viewBox": "0 0 200 200",
+      "colors": [
+        "#fff6da",
+        "#fdfbf4",
+        "#6b4e8e",
+        "#3a2a52"
+      ],
+      "has_gradient": false,
+      "has_filter": false,
+      "elements": 5
+    },
+    {
+      "file": "drafts/_raw-svg/svg-07.svg",
+      "viewBox": "0 0 200 200",
+      "colors": [
+        "#e3b341",
+        "#b8352e",
+        "#7e2019",
+        "#44596a",
+        "#9fb3c2"
+      ],
+      "has_gradient": false,
+      "has_filter": false,
+      "elements": 10
+    },
+    {
+      "file": "drafts/_raw-svg/svg-08.svg",
+      "viewBox": "0 0 200 200",
+      "colors": [
+        "#2f6e8e",
+        "#d9b23a",
+        "#3a2e1e",
+        "#e7c65a"
+      ],
+      "has_gradient": false,
+      "has_filter": false,
+      "elements": 13
+    },
+    {
+      "file": "drafts/_raw-svg/svg-09.svg",
+      "viewBox": "0 0 200 200",
+      "colors": [
+        "#8a8c8e",
+        "#6c6e70",
+        "#fbf8f1",
+        "#23282e",
+        "#e3b341"
+      ],
+      "has_gradient": false,
+      "has_filter": false,
+      "elements": 14
+    },
+    {
+      "file": "drafts/_raw-svg/svg-10.svg",
+      "viewBox": "0 0 200 200",
+      "colors": [
+        "#e6d9b8",
+        "#1a1d24",
+        "#d0413a",
+        "#9e2a24",
+        "#fbefd8"
+      ],
+      "has_gradient": false,
+      "has_filter": false,
+      "elements": 9
+    },
+    {
+      "file": "drafts/_raw-svg/svg-11.svg",
+      "viewBox": "0 0 200 200",
+      "colors": [
+        "#edeff0",
+        "#1b1e22",
+        "#e6c77a",
+        "#c0392b"
+      ],
+      "has_gradient": false,
+      "has_filter": false,
+      "elements": 17
+    },
+    {
+      "file": "drafts/_raw-svg/svg-12.svg",
+      "viewBox": "0 0 200 200",
+      "colors": [
+        "#fbefd8",
+        "#7a4a2a",
+        "#e9d3a6",
+        "#e3b341"
+      ],
+      "has_gradient": false,
+      "has_filter": false,
+      "elements": 7
+    },
+    {
+      "file": "drafts/_raw-svg/svg-13.svg",
+      "viewBox": "0 0 200 200",
+      "colors": [
+        "#3e5c86",
+        "#ffffff",
+        "#1f4e9e",
+        "#1f2a36"
+      ],
+      "has_gradient": false,
+      "has_filter": false,
+      "elements": 10
+    },
+    {
+      "file": "drafts/_raw-svg/svg-14.svg",
+      "viewBox": "0 0 200 200",
+      "colors": [
+        "#3a3f46",
+        "#8c96a3",
+        "#9fe3c8",
+        "#b4bcc6",
+        "#6e7884"
+      ],
+      "has_gradient": false,
+      "has_filter": false,
+      "elements": 14
+    },
+    {
+      "file": "drafts/_raw-svg/svg-15.svg",
+      "viewBox": "0 0 200 200",
+      "colors": [
+        "#3c5a78",
+        "#6b4a3a",
+        "#f2a7bd",
+        "#d9557b",
+        "#e3b341"
+      ],
+      "has_gradient": false,
+      "has_filter": false,
+      "elements": 17
+    }
+  ]
+}

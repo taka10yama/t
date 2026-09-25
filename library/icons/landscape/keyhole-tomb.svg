@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+<g fill="var(--c1)"><circle cx="100" cy="78" r="60"/><path d="M58 104h84l28 86H30z"/></g>
+<g fill="var(--c2)"><circle cx="100" cy="78" r="46"/><path d="M70 108h60l20 70H50z"/></g><circle cx="100" cy="78" r="22" fill="var(--c3)"/>
+</svg>

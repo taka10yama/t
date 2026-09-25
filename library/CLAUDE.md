@@ -306,6 +306,16 @@ node library/tools/pick.mjs --mood 力強い --fit 歴史 --format short --n 3
 - ドラフトは `inbox/<id>/drafts/` の下に同じ規約で置く（例 `inbox/<id>/drafts/motion/pop-overshoot.json`）
 - intake.yaml は `key: value`、`[a, b]` のインライン配列、`#` コメントのみ対応の簡易YAML
 
+### 任意のフィールド（あると検証・プレビューが使う）
+| 軸 | フィールド | 意味 |
+|---|---|---|
+| motion | `clip_from` / `clip_to` | clip-path で見せる入退場（ワイプなど）。enter は `transform_from` / `opacity_from` / `clip_from` のどれかが必要 |
+| type・layout | `stage_px` | 数値の基準になるステージの大きさ（例 `[1280, 720]`）。省略時は 1920×1080 |
+| icons | `default_colors` | 描いたときの色 `{ "c1": "#...", … }`。プレビューはこの色で描き、中立色に差し替えた例も並べる |
+| palette | `min_contrast_acc` | acc と背景のコントラスト比の下限。指定すると validate が検査する |
+| palette | `example_labels` | `examples` の各行の名前（プレビューに表示） |
+| 共通 | `notes` | 使い方の注意（強さの調整、組み合わせる部品など） |
+
 ### コマンド早見表（リポジトリルートから実行）
 ```bash
 node library/tools/intake.mjs <path|url> [--id <id>] [--type own|licensed_code|observation_only]
